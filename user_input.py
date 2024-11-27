@@ -1,6 +1,5 @@
 import re
 
-
 def ask_user_questions():
     # Questions to ask the user
     questions = {
@@ -30,6 +29,9 @@ def ask_user_questions():
 
     def validate_chipsett(have_chipsett):
         return have_chipsett in ["E", "H"]
+    
+    def validate_cabinet(cabinet_type):
+        return cabinet_type in ["3900", "5900", "3910"]
     
     def validate_files_loaded(files_loaded):
         return files_loaded in ["E", "H"]
@@ -68,7 +70,13 @@ def ask_user_questions():
                     break
                 else:
                     print("Geçersiz cevap. Yalnızca E veya H.")
-                    
+            
+            elif key == "cabinet_type":
+                if validate_cabinet(answer):
+                    user_answers[key] = answer
+                    break
+                else:
+                    print("Geçersiz cevap. Yalnızca 3900,5900,3910.")        
             elif key == "files_loaded":
                 if validate_files_loaded(answer):
                     user_answers[key] = answer
